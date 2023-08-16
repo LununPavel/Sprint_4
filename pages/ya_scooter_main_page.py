@@ -1,14 +1,14 @@
 import allure
-from selenium.webdriver import Keys
+from locators.ya_scooter_main_page_locators import LocatorMainYaScooterPage
+from locators.yandex_browser_main_page import LocatorYandexBrowserMainPage
 from pages.base_page import BasePage
 
 
 class YaScooterMainPage(BasePage):
 
-    @allure.step('Нажимаю на элемент клавишей Enter')
-    def click_on_accordion_button(self, locator_question):
-        self.driver.find_element(*locator_question).send_keys(Keys.ENTER)
-
     @allure.step('Получаю текст элемента')
-    def return_text_answer_accordion(self, locator_answer):
-        return self.driver.find_element(*locator_answer).text
+    def get_text_main_page(self):
+        return self.get_text(LocatorYandexBrowserMainPage.NAVIGATION_BAR)
+
+    def click_on_button_main_page(self):
+        self.click_on_button(LocatorMainYaScooterPage.YANDEX_BUTTON)
